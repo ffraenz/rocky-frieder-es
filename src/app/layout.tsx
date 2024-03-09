@@ -8,17 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Rocky’s Diary',
-  description: 'Dear Diary, Meow. Meow. Meow. That\'s it for now. Meow.',
-  openGraph: {
-    images: [
-      {
-        url: previewImage.src,
-        width: previewImage.width,
-        height: previewImage.height,
-        type: 'image/png'
-      }
-    ]
-  }
+  description: 'Dear Diary, Meow. Meow. Meow. That\'s it for now. Meow.'
 }
 
 export default function RootLayout({
