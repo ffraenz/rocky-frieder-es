@@ -1,7 +1,13 @@
 
 import { S3 } from '@aws-sdk/client-s3'
-
-const bucketUrlPrefix = process.env.AWS_BUCKET_URL_PREFIX ?? ''
+import {
+  awsAccessKeyId,
+  awsBucketName,
+  awsRegion,
+  awsSecretAccessKey,
+  bucketUrlPrefix,
+  timeZone
+} from '@/consts'
 
 export interface Snapshot {
   src: string
@@ -12,15 +18,15 @@ export interface Snapshot {
 
 export const findManySnapshots = async (): Promise<Snapshot[]> => {
   const client = new S3({
-    region: process.env.AWS_REGION,
+    region: awsRegion,
     credentials: {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+      accessKeyId: awsAccessKeyId,
+      secretAccessKey: awsSecretAccessKey,
     }
   })
 
   const bucketList = await client.listObjectsV2({
-    Bucket: process.env.AWS_BUCKET_NAME!
+    Bucket: awsBucketName
   })
 
   const snapshotUrls = bucketList.Contents
@@ -37,11 +43,11 @@ export const findManySnapshots = async (): Promise<Snapshot[]> => {
       const createdAt = new Date(key.slice(9, -5))
       const timeString = createdAt.toLocaleTimeString('en-UK', {
         hour: 'numeric',
-        minute: 'numeric'
+        minute: 'numeric',
+        timeZone: timeZone
       })
-
       return {
-        src: bucketUrlPrefix + key!,
+        src: bucketUrlPrefix + key,
         alt: 'Rocky’s place at ' + timeString,
         createdAt,
         timeString

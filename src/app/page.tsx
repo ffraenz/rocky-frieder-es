@@ -1,5 +1,6 @@
 
 import { Diary } from '@/components/diary'
+import { timeZone } from '@/consts'
 import { findManySnapshots } from '@/lib/snapshots'
 
 export default async function Home() {
@@ -7,7 +8,8 @@ export default async function Home() {
   const date = new Date().toLocaleDateString('en-UK', {
     day: 'numeric',
     month: 'long',
-    year: 'numeric'
+    year: 'numeric',
+    timeZone: timeZone
   })
   return (
     <Diary date={date} snapshots={snapshots} />
