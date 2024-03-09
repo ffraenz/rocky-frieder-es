@@ -30,7 +30,7 @@ export const findManySnapshots = async (): Promise<Snapshot[]> => {
       key.startsWith('snapshot-') &&
       key.endsWith('.webp'))
     .reverse()
-    .slice(0, 24 * 2) as string[]
+    .slice(0, 12) as string[]
 
   return snapshotUrls
     .map(key => {
