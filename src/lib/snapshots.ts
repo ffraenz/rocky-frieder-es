@@ -6,6 +6,7 @@ const bucketUrlPrefix = process.env.AWS_BUCKET_URL_PREFIX ?? ''
 export interface Snapshot {
   src: string
   createdAt: Date
+  alt: string
   timeString: string
 }
 
@@ -34,12 +35,16 @@ export const findManySnapshots = async (): Promise<Snapshot[]> => {
   return snapshotUrls
     .map(key => {
       const createdAt = new Date(key.slice(9, -5))
+      const timeString = createdAt.toLocaleTimeString('en-UK', {
+        hour: 'numeric',
+        minute: 'numeric'
+      })
+
       return {
         src: bucketUrlPrefix + key!,
+        alt: 'Rocky’s place at ' + timeString,
         createdAt,
-        timeString:
-          createdAt.getHours().toString().padStart(2, '0') + ':' +
-          createdAt.getMinutes().toString().padStart(2, '0')
+        timeString
       }
     })
 }

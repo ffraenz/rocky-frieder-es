@@ -35,7 +35,7 @@ export function Diary(props: DiaryProps) {
             <img
               className="w-full h-full scale-105 grayscale"
               src={props.snapshots.at(selectedIndex)?.src}
-              loading="lazy"
+              alt={props.snapshots.at(selectedIndex)?.alt}
             />
           )}
         </button>
@@ -49,13 +49,13 @@ export function Diary(props: DiaryProps) {
           {props.snapshots.map((snapshot, index) => (
             <button
               className="relative aspect-square rounded-full overflow-hidden"
-              data-snapshot-src={snapshot.src}
-              key={snapshot.src}
               onClick={onSnapshotSelect.bind(null, index)}
+              key={snapshot.src}
             >
               <img
                 className="w-full h-full scale-105 grayscale"
                 src={snapshot.src}
+                alt={snapshot.alt}
                 loading="lazy"
               />
               {selectedIndex === index && (
