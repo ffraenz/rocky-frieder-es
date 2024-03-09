@@ -26,7 +26,8 @@ export default function RootLayout({
               For Anni.
               By <a href="https://fraenz.frieder.es" rel="noopener" className="underline">Fränz</a>.
             </p>
-            <p className="pt-1 text-gray-500">
+            <p className="pt-1 text-gray-400">
+              View source code on <a href="https://github.com/ffraenz/rocky-frieder-es" rel="noopener" className="underline">GitHub</a>.
               Paw icon created by <a href="https://thenounproject.com/icon/paw-print-6055246/" rel="noopener nofollow" className="underline">Oh Rian</a>.
             </p>
           </footer>
