@@ -6,6 +6,7 @@ import {
   awsRegion,
   awsSecretAccessKey,
   bucketUrlPrefix,
+  locale,
   timeZone
 } from '@/consts'
 
@@ -13,6 +14,7 @@ export interface Snapshot {
   src: string
   createdAt: Date
   alt: string
+  dateString: string
   timeString: string
 }
 
@@ -38,19 +40,25 @@ export const findManySnapshots = async (): Promise<Snapshot[]> => {
     .reverse()
     .slice(0, 24) as string[]
 
-  return snapshotUrls
-    .map(key => {
-      const createdAt = new Date(key.slice(9, -5))
-      const timeString = createdAt.toLocaleTimeString('en-UK', {
-        hour: 'numeric',
-        minute: 'numeric',
-        timeZone: timeZone
-      })
-      return {
-        src: bucketUrlPrefix + key,
-        alt: 'Rocky’s place at ' + timeString,
-        createdAt,
-        timeString
-      }
+  return snapshotUrls.map(key => {
+    const createdAt = new Date(key.slice(9, -5))
+    const dateString = createdAt.toLocaleDateString(locale, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: timeZone
     })
+    const timeString = createdAt.toLocaleTimeString(locale, {
+      hour: 'numeric',
+      minute: 'numeric',
+      timeZone: timeZone
+    })
+    return {
+      src: bucketUrlPrefix + key,
+      alt: 'Rocky’s place on ' + dateString + ' at ' + timeString,
+      createdAt,
+      dateString,
+      timeString
+    }
+  })
 }

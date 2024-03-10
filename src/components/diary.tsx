@@ -1,12 +1,11 @@
 
 'use client'
 
-import { Snapshot } from '@/lib/snapshots'
 import { Paw } from './paw'
+import { Snapshot } from '@/lib/snapshots'
 import { useRef, useState } from 'react'
 
 interface DiaryProps {
-  date: string
   snapshots: Snapshot[]
 }
 
@@ -31,18 +30,16 @@ export function Diary(props: DiaryProps) {
           className="relative aspect-square w-full rounded-full overflow-hidden"
           onClick={onNextSnapshotSelect}
         >
-          {props.snapshots.at(selectedIndex)?.src !== undefined && (
-            <img
-              className="w-full h-full scale-105 grayscale"
-              src={props.snapshots.at(selectedIndex)?.src}
-              alt={props.snapshots.at(selectedIndex)?.alt}
-            />
-          )}
+          <img
+            className="w-full h-full scale-105 grayscale"
+            src={props.snapshots[selectedIndex].src}
+            alt={props.snapshots[selectedIndex].alt}
+          />
         </button>
       </div>
       <div className="pt-12">
         <p className="font-extrabold text-4xl sm:text-5xl leading-tight sm:leading-tight">
-          <span>{props.date}</span><br />
+          <span>{props.snapshots[0].dateString}</span><br />
           <span className='text-yellow-300'>Dear diary,</span>
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 py-6 sm:py-12">

@@ -1,20 +1,17 @@
 
 import { Diary } from '@/components/diary'
 import { findManySnapshots } from '@/lib/snapshots'
-import { timeZone } from '@/consts'
+import { notFound } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
-export const revalidate = 60 * 15
 
 export default async function Home() {
   const snapshots = await findManySnapshots()
-  const date = new Date().toLocaleDateString('en-UK', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: timeZone
-  })
+  if (snapshots.length === 0) {
+    // No snapshots, no diary
+    notFound()
+  }
   return (
-    <Diary date={date} snapshots={snapshots} />
+    <Diary snapshots={snapshots} />
   )
 }

@@ -1,14 +1,15 @@
 
 import './globals.css'
-import previewImage from './preview.png'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { baseUrl, locale } from '@/consts'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Rocky’s Diary',
-  description: 'Dear Diary, Meow. Meow. Meow. That\'s it for now. Meow.'
+  description: 'Dear Diary, Meow. Meow. Meow. That\'s it for now. Meow.',
+  metadataBase: new URL(baseUrl)
 }
 
 export default function RootLayout({
@@ -17,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={"bg-zinc-950 text-white " + inter.className}>
         <main className="mx-auto max-w-[800px] px-4 py-16 sm:py-32 sm:px-8">
           {children}
@@ -27,6 +28,7 @@ export default function RootLayout({
               By <a href="https://fraenz.frieder.es" rel="noopener" className="underline">Fränz</a>.
             </p>
             <p className="pt-1 text-gray-400">
+              Updated automatically.
               View source code on <a href="https://github.com/ffraenz/rocky-frieder-es" rel="noopener" className="underline">GitHub</a>.
               Paw icon created by <a href="https://thenounproject.com/icon/paw-print-6055246/" rel="noopener nofollow" className="underline">Oh Rian</a>.
             </p>
