@@ -1,18 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  headers: async () => {
-    return [
-      {
-        source: '/',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'max-age=1800'
-          }
-        ]
-      }
-    ]
-  }
-}
+const nextConfig = {}
 
 export default nextConfig
