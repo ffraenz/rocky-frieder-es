@@ -28,7 +28,7 @@ export default function RootLayout({
               By <a href="https://wierk.lu" rel="noopener" className="underline">Fränz</a>.
             </p>
             <p className="pt-1 text-gray-400">
-              Updated automagically.
+              Updated automagically with photos from archive.
               View <a href="https://github.com/ffraenz/rocky-frieder-es" rel="noopener" className="underline">source code</a> and <a href="https://app.usefathom.com/share/brcszhed/rocky.frieder.es" rel="noopener" className="underline">web analytics</a>.
               Paw created by <a href="https://thenounproject.com/icon/paw-print-6055246/" rel="noopener nofollow" className="underline">Oh Rian</a>.
             </p>

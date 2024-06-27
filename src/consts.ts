@@ -1,5 +1,5 @@
 
-export const locale = 'en-UK'
+export const locale = 'de-DE'
 export const timeZone = 'Europe/Luxembourg'
 export const baseUrl = process.env.BASE_URL ?? 'https://rocky.frieder.es'
 

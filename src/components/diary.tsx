@@ -39,7 +39,7 @@ export function Diary(props: DiaryProps) {
       </div>
       <div className="pt-12">
         <p className="font-extrabold text-4xl sm:text-5xl leading-tight sm:leading-tight">
-          <span>{props.snapshots[0].dateString}</span><br />
+          <span>{props.snapshots[0].longDateString}</span><br />
           <span className='text-yellow-300'>Dear diary,</span>
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 py-6 sm:py-12">
@@ -59,7 +59,7 @@ export function Diary(props: DiaryProps) {
                 <div className="absolute top-0 right-0 bottom-0 left-0 border-4 border-yellow-300 rounded-full" />
               )}
               <span className="absolute inline-block px-1.5 bottom-3 left-1/2 -translate-x-1/2 bg-white text-zinc-950 font-medium rounded-full">
-                {snapshot.timeString}
+                {snapshot.dateString}
               </span>
             </button>
           ))}
